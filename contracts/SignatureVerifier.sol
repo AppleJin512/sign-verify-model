@@ -4,11 +4,6 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 
-/**
- * @title SignatureVerifier
- * @dev Smart contracts are dividing prize pool tokens between winners and even taking care of the gas fee - we call this CSP or CoinracerSmartPool.
- * CSP is a combination of different APIs and systems working together to provide the best and fair in-game economy.
- */
 contract SignatureVerifier {
 
     using ECDSA for bytes32;
