@@ -1,4 +1,4 @@
-# Coinracer Smart Pool
+# Signature Verification Model
 Simple Signature Verification Model
 
 1. Clone repo

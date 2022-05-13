@@ -4,7 +4,6 @@
   "description": "Simple Signature Verification Model",
   "main": "index.js",
   "author": "IntelMin <intelmin0915@gmail.com>",
-  "repository": "https://github.com/Coinracer-io/signature-verification-model.git",
   "license": "ISC",
   "scripts": {
     "compile": "npx hardhat compile",
