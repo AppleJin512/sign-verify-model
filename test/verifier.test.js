@@ -1,6 +1,7 @@
 const { expect } = require("chai");
 const { ethers } = require("hardhat");
-const { getSignatureFromPrivateKey } = require("../utils/mock_backend");
+const { getSignatureFromPrivateKey } = require("../utils/sign");
+const axios = require("axios").default;
 
 require('dotenv').config()
 
@@ -14,7 +15,7 @@ describe("Testing with mocks", () => {
   const SIGNER_ADDRESS = process.env.SIGNER_ADDRESS;
   const SIGNER_PRIVATE_KEY = process.env.SIGNER_PRIVATE_KEY;
   const WRONG_PRIVATE_KEY = "0x6dcdf55aae26fe4a2a1adb3aa07e89cf2305330e6da4afa010d6a5f21dacbb2f";
-
+  
   let signers; 
 
   describe("Test Verifier", () => {
@@ -120,6 +121,22 @@ describe("Testing with mocks", () => {
           nonce + 1
         )
       ).to.be.revertedWith("SignatureVerifier: already used signature");
+    });
+    
+    it("Transaction successful for a valid signer's signature fetched from API", async () => {
+      const data = { params: [TEST_PARAM1, TEST_PARAM2, TEST_PARAM3] };
+      const res = await axios.get('http://localhost:3000/signature-request', {params: data});
+      const { signature, nonce } = res;
+
+      await expect(
+        verifier.verify(
+          TEST_PARAM1, 
+          TEST_PARAM2, 
+          TEST_PARAM3, 
+          signature, 
+          nonce
+        )
+      ).to.not.be.reverted;
     });
   });
 });

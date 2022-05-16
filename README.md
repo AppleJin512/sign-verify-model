@@ -18,7 +18,7 @@ yarn install
 
 ```shell
 BSCSCAN_API=<YOUR-BSCSCAN-API-KEY>
-PRIVATE_KEY=<YOUR-PRIVATE-KEY>
+DEPLOYER_PRIVATE_KEY=<YOUR-PRIVATE-KEY>
 CMC_APIKEY=<YOUR-COINMARKETCAP-API-KEY>
 BSCTEST_RPC_URL=https://data-seed-prebsc-1-s1.binance.org:8545/
 
@@ -27,18 +27,20 @@ SIGNER_ADDRESS=<SIGNER-ADDRESS>
 ```
 
 4. Test the model
+You have to run the server before running tests.
 
 ```shell
+yarn server
 yarn test
 ```
 
-4. Deploy the contract
+5. Deploy the contract
 
 ```shell
 yarn deploy
 ```
 
-5. Verify the contract
+6. Verify the contract
 
 ```shell
 npx hardhat verify --network bsctest <YOUR_DEPLOYED_ADDRESS> "0x0000000000000000000000000000000000000000"

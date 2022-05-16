@@ -26,7 +26,7 @@ module.exports = {
   networks: {
     bsctest: {
       url: process.env.BSCTEST_RPC_URL || "",
-      accounts: !!process.env.PRIVATE_KEY ? [process.env.PRIVATE_KEY] : [],
+      accounts: !!process.env.DEPLOYER_PRIVATE_KEY ? [process.env.DEPLOYER_PRIVATE_KEY] : [],
     },
   },
   gasReporter: {
